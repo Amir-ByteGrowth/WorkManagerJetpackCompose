@@ -6,11 +6,12 @@ import com.example.workmanagerwithapicallandroom.domain.models.Quote
 import com.example.workmanagerwithapicallandroom.domain.use_cases.GetAllQuotesFromDbUseCase
 import com.example.workmanagerwithapicallandroom.domain.use_cases.GetQuoteUseCase
 import com.example.workmanagerwithapicallandroom.domain.use_cases.SetUpPeriodicWorkRequestUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
-
+@HiltViewModel
 class MainViewModel @Inject constructor(
     private val getQuoteUseCase: GetQuoteUseCase,
     private val getAllQuotesFromDbUseCase: GetAllQuotesFromDbUseCase,

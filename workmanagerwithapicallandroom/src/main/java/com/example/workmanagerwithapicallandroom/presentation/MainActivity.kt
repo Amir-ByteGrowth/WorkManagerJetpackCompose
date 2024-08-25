@@ -32,6 +32,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.workmanagerwithapicallandroom.common.formatTimestampToDMY
 import com.example.workmanagerwithapicallandroom.presentation.ui.theme.WorkManagerJetpackComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -68,7 +69,7 @@ fun MainScreen(viewModel: MainViewModel, fetchQuote: () -> Unit) {
             Box(
                 modifier = Modifier
                     .padding(it)
-                    .fillMaxSize(), contentAlignment = Alignment.CenterStart
+                    .fillMaxSize(), contentAlignment = Alignment.Center
             ) {
                 Text(text = "Nothing Found")
             }
@@ -89,7 +90,7 @@ fun MainScreen(viewModel: MainViewModel, fetchQuote: () -> Unit) {
                                 modifier = Modifier.fillParentMaxWidth(),
                                 horizontalArrangement = Arrangement.SpaceBetween
                             ) {
-                                Text(text = it.time.toString())
+                                Text(text = formatTimestampToDMY(it.time).toString())
                                 Text(text = it.workType)
                             }
                         }

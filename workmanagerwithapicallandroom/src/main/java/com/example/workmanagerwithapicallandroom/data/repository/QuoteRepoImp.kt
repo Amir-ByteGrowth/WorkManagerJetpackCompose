@@ -36,7 +36,7 @@ class QuoteRepoImp(
         val periodicWorkRequest = PeriodicWorkRequest.Builder(
             PeriodicWorker::class.java,
             MIN_PERIODIC_INTERVAL_MILLIS, TimeUnit.MILLISECONDS
-        ).build()
+        ).setConstraints(constraints).build()
 
         workManager.enqueueUniquePeriodicWork(
             "periodic_work",

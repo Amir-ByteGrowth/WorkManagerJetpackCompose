@@ -23,7 +23,7 @@ object DataModule {
     @Provides
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://dummyjson.com/quotes/random")
+            .baseUrl("https://dummyjson.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
