@@ -1,4 +1,4 @@
-package com.example.workmanagerwithapicallandroom.ui.theme
+package com.example.workmanagerwithapicallandroom.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
