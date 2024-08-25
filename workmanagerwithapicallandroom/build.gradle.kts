@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.dagger)
+    kotlin("kapt")
 }
 
 android {
@@ -66,4 +68,19 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+
+    implementation(libs.work.manager)
+    implementation(libs.work.manager.dagger)
+    kapt(libs.work.manager.dagger.kapt)
+    implementation(libs.hilt.compose.navigation)
+
+    implementation(libs.dagger.hilt)
+    kapt(libs.dagger.kapt)
+
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson.convertor)
+
+    implementation(libs.room.ktx)
+    kapt(libs.room.compiler)
 }
