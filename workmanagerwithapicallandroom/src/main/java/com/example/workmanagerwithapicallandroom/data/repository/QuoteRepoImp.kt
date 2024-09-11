@@ -8,8 +8,9 @@ import androidx.work.PeriodicWorkRequest
 import androidx.work.PeriodicWorkRequest.Companion.MIN_PERIODIC_INTERVAL_MILLIS
 import androidx.work.WorkManager
 import com.example.workmanagerwithapicallandroom.data.local.QuoteDao
-import com.example.workmanagerwithapicallandroom.data.mappers.PeriodicWorker
+import com.example.workmanagerwithapicallandroom.data.worker.PeriodicWorker
 import com.example.workmanagerwithapicallandroom.data.worker.FetchWorker
+import com.example.workmanagerwithapicallandroom.data.worker.NotificationWorker
 import com.example.workmanagerwithapicallandroom.domain.models.Quote
 import com.example.workmanagerwithapicallandroom.domain.repository.QuoteRepository
 import kotlinx.coroutines.flow.Flow
@@ -24,7 +25,11 @@ class QuoteRepoImp(
             Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
         val workRequest =
             OneTimeWorkRequestBuilder<FetchWorker>().setConstraints(constraints).build()
-        workManager.enqueue(workRequest)
+        val notificationWOrkRequest = OneTimeWorkRequestBuilder<NotificationWorker>()
+            .build()
+        workManager.beginWith(workRequest)
+            .then(notificationWOrkRequest)
+            .enqueue()
 
     }
 
